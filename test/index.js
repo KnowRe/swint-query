@@ -15,7 +15,19 @@ describe('Query test', function() {
 
 	before(function(done) {
 		var credPath = path.join(process.env.HOME, '.swint', 'swint-query-test.json'),
+			cred;
+
+		try {
+			fs.accessSync(credPath);
 			cred = JSON.parse(fs.readFileSync(credPath));
+		} catch(e) {
+			cred = {
+				host: process.env.SWINT_QUERY_TEST_HOST,
+				database: process.env.SWINT_QUERY_TEST_DATABASE,
+				user: process.env.SWINT_QUERY_TEST_USER,
+				password: process.env.SWINT_QUERY_TEST_PASSWORD
+			};
+		}
 
 		var manager = swintQuery.Manager({
 				dir: path.join(__dirname, '../test_models'),

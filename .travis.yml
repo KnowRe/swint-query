@@ -1,4 +1,8 @@
+services:
+  - mysql
 language: node_js
 node_js:
   - "5.0.0"
   - "4.2.1"
+before_script:
+  - mysql < test/test.sql

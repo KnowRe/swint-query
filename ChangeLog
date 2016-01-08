@@ -1,2 +1,5 @@
+2016.01.04, Version 1.0.1
+ * Fix: Added length check in multiInsertData
+
 2016.01.03, Version 1.0.0
  * First official release

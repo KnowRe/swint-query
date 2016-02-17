@@ -1,3 +1,6 @@
+2016.02.17, Version 1.0.2
+ * Fix: Bug fix in buildSaveQuery
+
 2016.01.04, Version 1.0.1
  * Fix: Added length check in multiInsertData
 

@@ -1,6 +1,6 @@
 {
   "name": "swint-query",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "SQL query generator for Swint",
   "main": "lib/index.js",
   "scripts": {
@@ -37,6 +37,6 @@
   },
   "devDependencies": {
     "mocha": "^2.4.5",
-    "eslint": "^1.10.3"
+    "eslint": "^2.2.0"
   }
 }

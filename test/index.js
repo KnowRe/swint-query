@@ -5,7 +5,7 @@ var assert = require('assert'),
 	fs = require('fs'),
 	swintQuery = require('../lib');
 
-global.swintVar.printLevel = 5;
+// global.swintVar.printLevel = 5;
 
 describe('Query test', function() {
 	var models,

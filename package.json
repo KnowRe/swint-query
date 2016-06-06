@@ -29,14 +29,14 @@
   },
   "homepage": "https://github.com/KnowRe-Dev/swint-query",
   "dependencies": {
-    "async": "^2.0.0-rc.2",
-    "date-utils": "^1.2.19",
+    "async": "^2.0.0-rc.5",
+    "date-utils": "^1.2.21",
     "mysql": "^2.10.2",
     "sprintf": "^0.1.5",
     "swint-helper": "1.x"
   },
   "devDependencies": {
-    "mocha": "^2.4.5",
-    "eslint": "^2.6.0"
+    "mocha": "^2.5.3",
+    "eslint": "^2.11.1"
   }
 }

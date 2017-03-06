@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-  - "6.2.1"
+  - "7.7.1"
+  - "7.0.0"
+  - "6.10.0"
   - "6.0.0"
-  - "4.4.5"
-  - "4.0.0"
 before_script:		
   - mysql < test/test.sql
 deploy:
@@ -13,7 +13,7 @@ deploy:
     secure: "hcM/aetdlKPv76FN3UuXx5wtK73NV6r3+0DvGahAtztW+JUAHnQak9GvMPvfEr1hs7X/7BOAYvtgty6+VXG8LB9Vivbq8beZcR/GfLh3tATXizkCFc4Lery0kdjLSzWQ/DJ3brA65W2Rkt8wsbtzIj3vU5Io14X2GdhARb8RMq/74G0eveKhV3DkppLIfbZi+Ilr33Nd4MBEtnNZwDzmPGCvOVbXW4vig0e0bLGc6p/QEzLn9duespBueTElTxTfGczB6rrGZ91jUFndqb0rZrLf5GC7NQgulkBSrUqg3LfmQkfywRYM/v0W0eoswjF9vcaenFQtXH7JVORXsAZ/V5Ra9sgswJvBlj/705VZcWRZUy61gi/ZwEbMrI3LwC9tqvS92zbnLcTEkpTMs/HiMht9WPiCaLqspsgOiGWMTo0XhptKqembwqjGJCNBUATjCUwEy+Xw6CQuuMKWxugnRVSnzn94K8ihGYtkuuu6UEDxn1zqev30lDC9LCyCoSUTnrrWd+Ec5aGHfcRpZqW3KDqRos6WD7mDOijrjsP0hj91mly6QwTDbS4TBWsB4Uph81Z6tygUAIfWD6rYl3vPMnCkHm0JAE7UgTXkawwUNs3lWuYLm4YIDV35ePujYgf9D4o0inNQKFVVdLHjAWnOykt2GYPrLPCRCKRrIUk7xIg="
   on:
     branch: stable
-    node_js: "6.2.1"
+    node_js: "7.7.1"
 notifications:
   slack:
     secure: "qYUbUu62d8DoMjIEbwd5y24gsrqsJylVsNLjYfxM0Cg05UgKfU7RV3MBjOQO3JOvjfK0HsAcVvz3EsXVuU1Z/kIPNhlWkcL6OxU+hBXr2J0LJVWnDT+sueba/fkTeOxoFpRLbK2pRcINgXTw8Du/22aosJuM4jHn/cz6/XD4EGVSLfIh1lR9Nj4/nVEIcluedmHV2VSQjjMlBwUfOyOZ1fr1qwLnXw5T+kQHv2l3qL363dzK3PdK4wk2hImuq2BPOvcsYpkMBmcV0unW9UL8w3Wnbr5f1irnRmnvPvZWr4qRyquYSCnbiTQQhEabkiZU1ya/re4XIndsh8d65ufHJR1H6t/okMEJwH8YRqv3b+e32j5Jcf64uuG/2ZaQftoKJJzH0rf0fvNRbbf11YGSZeF6uzeKg6/u36y8ihO8HQesBZcxy+pSTfgWzvzkXau6NgVc8LTHA4xOyPV6Cqfrql0+5vbRvl+yZ4ZNyZGXYjTXsIdQGIMrFWka8/2Q32f+PvPvat4ckOc8wHcrRwQjR33Hgi0DHNqgcXxsW/CyRUd8fUvzsqppF9kxcIOWn77VqmLwhOqhMBpHgEVKulGce7fawXeWYcrcyTKyDrH+cAwgNws21XtoeiXvlmFiCXnc4VsCYYRZ1vUU0rPNhV4n+O446hwBssuFschkhlcfcok="

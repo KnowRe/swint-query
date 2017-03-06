@@ -1,6 +1,6 @@
 {
   "name": "swint-query",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "SQL query generator for Swint",
   "main": "lib/index.js",
   "scripts": {

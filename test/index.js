@@ -22,10 +22,10 @@ describe('Query test', function() {
 			cred = JSON.parse(fs.readFileSync(credPath));
 		} catch(e) {
 			cred = {
-				host: 'localhost',
-				database: 'swint-query-test',
-				user: 'root',
-				password: ''
+				host: process.env.SWINT_QUERY_TEST_HOST,
+				database: process.env.SWINT_QUERY_TEST_DATABASE,
+				user: process.env.SWINT_QUERY_TEST_USER,
+				password: process.env.SWINT_QUERY_TEST_PASSWORD
 			};
 		}
 

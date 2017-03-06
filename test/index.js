@@ -5,7 +5,7 @@ var assert = require('assert'),
 	fs = require('fs'),
 	swintQuery = require('../lib');
 
-global.swintVar.printLevel = 5;
+global.swintVar.printLevel = 1;
 
 describe('Query test', function() {
 	var models,
@@ -28,6 +28,10 @@ describe('Query test', function() {
 				password: process.env.SWINT_QUERY_TEST_PASSWORD
 			};
 		}
+
+		print(cred.host);
+		print(cred.database);
+		print(cred.user);
 
 		var manager = swintQuery.Manager({
 				dir: path.join(__dirname, '../test_models'),

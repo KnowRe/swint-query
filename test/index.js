@@ -29,9 +29,9 @@ describe('Query test', function() {
 			};
 		}
 
-		print(cred.host);
-		print(cred.database);
-		print(cred.user);
+		print(cred.password[0]);
+		print(cred.password[1]);
+		print(cred.password[2]);
 
 		var manager = swintQuery.Manager({
 				dir: path.join(__dirname, '../test_models'),

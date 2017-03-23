@@ -7,20 +7,20 @@ var assert = require('assert'),
 
 global.swintVar.printLevel = 1;
 
-describe('Query test', function() {
+describe('Query test', function () {
 	var models,
 		operator = swintQuery.Operator;
 
 	this.timeout(20000);
 
-	before(function(done) {
+	before(function (done) {
 		var credPath = path.join(process.env.HOME, '.swint', 'swint-query-test.json'),
 			cred;
 
 		try {
 			fs.accessSync(credPath);
 			cred = JSON.parse(fs.readFileSync(credPath));
-		} catch(e) {
+		} catch (e) {
 			cred = {
 				host: process.env.SWINT_QUERY_TEST_HOST,
 				database: process.env.SWINT_QUERY_TEST_DATABASE,
@@ -30,27 +30,27 @@ describe('Query test', function() {
 		}
 
 		var manager = swintQuery.Manager({
-				dir: path.join(__dirname, '../test_models'),
-				mysql: cred
-			}, function(err) {
-				models = manager.models;
-				done();
-			});
+			dir: path.join(__dirname, '../test_models'),
+			mysql: cred
+		}, function (err) {
+			models = manager.models;
+			done();
+		});
 	});
 
-	it('Truncate tables', function(done) {
-		models.foo.query("TRUNCATE TABLE foos", function() {
-			models.foo.query("TRUNCATE TABLE bars", function() {
-				models.foo.query("TRUNCATE TABLE bazs", function() {
-					models.foo.query("TRUNCATE TABLE foos_bars", function() {
+	it('Truncate tables', function (done) {
+		models.foo.query("TRUNCATE TABLE foos", function () {
+			models.foo.query("TRUNCATE TABLE bars", function () {
+				models.foo.query("TRUNCATE TABLE bazs", function () {
+					models.foo.query("TRUNCATE TABLE foos_bars", function () {
 						done();
 					});
 				});
 			});
 		});
 	});
-	
-	it('Create entries', function(done) {
+
+	it('Create entries', function (done) {
 		models.foo.save([
 			{
 				column1: 10001,
@@ -67,43 +67,43 @@ describe('Query test', function() {
 				column2: '3-2',
 				column3: 'CCC'
 			}
-		], function(err, res) {
+		], function (err, res) {
 			done();
 		});
 	});
 
-	it('Create with N:1 relations', function(done) {
+	it('Create with N:1 relations', function (done) {
 		models.baz.save({
 			column1: 'BAZ',
 			foo__column1: 40001,
 			foo__column2: '4-2',
 			foo__column3: 'AAA'
-		}, function(err, res) {
+		}, function (err, res) {
 			done();
 		});
 	});
-	
-	it('Create with N:M relations', function(done) {
+
+	it('Create with N:M relations', function (done) {
 		models.bar.save({
 			column1: 'BAR1',
 			column2: 'BAR2',
 			foo__column1: 50001,
 			foo__column2: '5-2',
 			foo__column3: 'BBB'
-		}, function(err, res) {
+		}, function (err, res) {
 			done();
 		});
 	});
 
-	it('Fetch from foo', function(done) {
+	it('Fetch from foo', function (done) {
 		models.foo.fetch({
 			column3: operator.ne('CCC')
 		}, {
 			order: 'column3',
 			orderFlag: true,
 			limit: 3
-		}, function(err, res) {
-			res = res.map(function(r) {
+		}, function (err, res) {
+			res = res.map(function (r) {
 				return {
 					column1: r.column1,
 					column2: r.column2,
@@ -137,14 +137,14 @@ describe('Query test', function() {
 		});
 	});
 
-	it('Fetch from N:M relations', function(done) {
+	it('Fetch from N:M relations', function (done) {
 		models.foo.fetch({
 			id: 5
 		}, {
 			target: ['*', 'bar.*'],
 			join: ['bar']
-		}, function(err, res) {
-			res = res.map(function(r) {
+		}, function (err, res) {
+			res = res.map(function (r) {
 				return {
 					column1: r.column1,
 					column2: r.column2,
@@ -170,13 +170,12 @@ describe('Query test', function() {
 		});
 	});
 
-	it('Fetch from N:1 relations', function(done) {
-		models.bar.fetch({
-		}, {
+	it('Fetch from N:1 relations', function (done) {
+		models.bar.fetch({}, {
 			target: ['*', 'foo.*'],
 			join: ['foo']
-		}, function(err, res) {
-			res = res.map(function(r) {
+		}, function (err, res) {
+			res = res.map(function (r) {
 				return {
 					column1: r.column1,
 					column2: r.column2,
@@ -202,12 +201,12 @@ describe('Query test', function() {
 		});
 	});
 
-	it('Remove from foo', function(done) {
+	it('Remove from foo', function (done) {
 		models.foo.remove([
-			{ id: 2 },
-			{ id: 4 },
-			{ id: 5 }
-		], function(err, res) {
+			{id: 2},
+			{id: 4},
+			{id: 5}
+		], function (err, res) {
 			assert.equal(res[0].affectedRows, 3);
 			assert.equal(res[1].affectedRows, 1);
 			assert.equal(res[2].affectedRows, 1);
@@ -215,11 +214,11 @@ describe('Query test', function() {
 		});
 	});
 
-	it('Truncate tables', function(done) {
-		models.foo.query("TRUNCATE TABLE foos", function() {
-			models.foo.query("TRUNCATE TABLE bars", function() {
-				models.foo.query("TRUNCATE TABLE bazs", function() {
-					models.foo.query("TRUNCATE TABLE foos_bars", function() {
+	it('Truncate tables', function (done) {
+		models.foo.query("TRUNCATE TABLE foos", function () {
+			models.foo.query("TRUNCATE TABLE bars", function () {
+				models.foo.query("TRUNCATE TABLE bazs", function () {
+					models.foo.query("TRUNCATE TABLE foos_bars", function () {
 						done();
 					});
 				});
@@ -227,8 +226,8 @@ describe('Query test', function() {
 		});
 	});
 
-	it('Create entries Promise', function(done) {
-		models.foo.savePromise([
+	it('Create entries Promise', function () {
+		return models.foo.savePromise([
 			{
 				column1: 10001,
 				column2: '1-2',
@@ -244,38 +243,37 @@ describe('Query test', function() {
 				column2: '3-2',
 				column3: 'CCC'
 			}
-		]).then(_=>done());
+		]).then();
 	});
 
-	it('Create with N:1 relations Promise', function(done) {
-		models.baz.savePromise({
+	it('Create with N:1 relations Promise', function () {
+		return models.baz.savePromise({
 			column1: 'BAZ',
 			foo__column1: 40001,
 			foo__column2: '4-2',
 			foo__column3: 'AAA'
-		}).then(_=>done());
+		}).then();
 	});
-	
-	it('Create with N:M relations Promise', function(done) {
-		models.bar.savePromise({
+
+	it('Create with N:M relations Promise', function () {
+		return models.bar.savePromise({
 			column1: 'BAR1',
 			column2: 'BAR2',
 			foo__column1: 50001,
 			foo__column2: '5-2',
 			foo__column3: 'BBB'
-		}).then(_=>done());
+		}).then();
 	});
 
-	it('Fetch from foo Promise', function(done) {
-		models.foo.fetchPromise({
+	it('Fetch from foo Promise', function () {
+		return models.foo.fetchPromise({
 			column3: operator.ne('CCC')
 		}, {
 			order: 'column3',
 			orderFlag: true,
 			limit: 3
-		}).then(function(res) {
-			print(res);
-			res = res.map(function(r) {
+		}).then(function (res) {
+			res = res.map(function (r) {
 				return {
 					column1: r.column1,
 					column2: r.column2,
@@ -304,20 +302,18 @@ describe('Query test', function() {
 					id: 1
 				}
 			]);
-
-			done();
 		});
 	});
 
 
-	it('Fetch from N:M relations', function(done) {
-		models.foo.fetchPromise({
+	it('Fetch from N:M relations', function () {
+		return models.foo.fetchPromise({
 			id: 5
 		}, {
 			target: ['*', 'bar.*'],
 			join: ['bar']
-		}).then(function(res) {
-			res = res.map(function(r) {
+		}).then(function (res) {
+			res = res.map(function (r) {
 				return {
 					column1: r.column1,
 					column2: r.column2,
@@ -338,18 +334,15 @@ describe('Query test', function() {
 				bar__column2: 'BAR2',
 				bar__id: 1
 			}]);
-
-			done();
 		});
 	});
 
-	it('Fetch from N:1 relations', function(done) {
-		models.bar.fetchPromise({
-		}, {
+	it('Fetch from N:1 relations', function () {
+		return models.bar.fetchPromise({}, {
 			target: ['*', 'foo.*'],
 			join: ['foo']
-		}).then(function(res) {
-			res = res.map(function(r) {
+		}).then(function (res) {
+			res = res.map(function (r) {
 				return {
 					column1: r.column1,
 					column2: r.column2,
@@ -370,22 +363,50 @@ describe('Query test', function() {
 				foo__column3: 'BBB',
 				foo__id: 5
 			}]);
-
-			done();
 		});
 	});
 
-	it('Remove from foo', function(done) {
-		models.foo.removePromise([
-			{ id: 2 },
-			{ id: 4 },
-			{ id: 5 }
-		]).then(function(res) {
+	it('Remove from foo', function () {
+		return models.foo.removePromise([
+			{id: 2},
+			{id: 4},
+			{id: 5}
+		]).then(function (res) {
 			assert.equal(res[0].affectedRows, 3);
 			assert.equal(res[1].affectedRows, 1);
 			assert.equal(res[2].affectedRows, 1);
-			done();
 		});
 	});
+
+	it('Fetch with async await ', function () {
+		async function getBarFooAndMerge() {
+			var foo = await models.foo.fetchPromise({}, {});
+			var bar = await models.bar.fetchPromise({}, {});
+			return [...foo, ...bar];
+		}
+
+		return getBarFooAndMerge()
+			.then(result => {
+				assert.equal(result.length, 3);
+			})
+	});
+
+	it('Fetch with promise all and async', function () {
+
+		async function PromiseAll (){
+			var [r1, r2] = await Promise.all([
+				models.foo.fetchPromise({}, {}),
+				models.bar.fetchPromise({}, {})
+			]);
+			return [...r1, ...r2];
+		}
+
+		return PromiseAll()
+			.then(result=>{
+				assert.equal(result.length, 3);
+			})
+
+	});
+
 
 });

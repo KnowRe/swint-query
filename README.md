@@ -1,4 +1,6 @@
 # swint-query
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Knowre-Dev/swint-query.svg)](https://greenkeeper.io/)
 MySQL query generator for Swint
 
 **Warning: This is not the final draft yet, so do not use this until its official version is launched**

@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/KnowRe-Dev/swint-query",
   "dependencies": {
-    "async": "2.4.1",
+    "async": "2.5.0",
     "date-utils": "1.2.21",
     "mysql": "2.13.0",
     "sprintf": "0.1.5",

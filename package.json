@@ -31,7 +31,7 @@
   "dependencies": {
     "async": "2.5.0",
     "date-utils": "1.2.21",
-    "mysql": "2.14.1",
+    "mysql": "2.15.0",
     "sprintf": "0.1.5",
     "swint-helper": "1.2.7"
   },

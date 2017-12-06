@@ -1,3 +1,6 @@
+2017.12.06, Version 1.2.4
+ * Fix: add --exit option to npm test command
+
 2017.12.06, Version 1.2.3
  * Upgrade: Upgraded node version & dependencies
 

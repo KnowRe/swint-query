@@ -4,7 +4,7 @@
   "description": "SQL query generator for Swint",
   "main": "lib/index.js",
   "scripts": {
-    "test": "eslint lib && mocha"
+    "test": "eslint lib && mocha --exit"
   },
   "repository": {
     "type": "git",

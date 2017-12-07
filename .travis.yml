@@ -10,10 +10,9 @@ deploy:
   api_key:
     secure: >-
       hcM/aetdlKPv76FN3UuXx5wtK73NV6r3+0DvGahAtztW+JUAHnQak9GvMPvfEr1hs7X/7BOAYvtgty6+VXG8LB9Vivbq8beZcR/GfLh3tATXizkCFc4Lery0kdjLSzWQ/DJ3brA65W2Rkt8wsbtzIj3vU5Io14X2GdhARb8RMq/74G0eveKhV3DkppLIfbZi+Ilr33Nd4MBEtnNZwDzmPGCvOVbXW4vig0e0bLGc6p/QEzLn9duespBueTElTxTfGczB6rrGZ91jUFndqb0rZrLf5GC7NQgulkBSrUqg3LfmQkfywRYM/v0W0eoswjF9vcaenFQtXH7JVORXsAZ/V5Ra9sgswJvBlj/705VZcWRZUy61gi/ZwEbMrI3LwC9tqvS92zbnLcTEkpTMs/HiMht9WPiCaLqspsgOiGWMTo0XhptKqembwqjGJCNBUATjCUwEy+Xw6CQuuMKWxugnRVSnzn94K8ihGYtkuuu6UEDxn1zqev30lDC9LCyCoSUTnrrWd+Ec5aGHfcRpZqW3KDqRos6WD7mDOijrjsP0hj91mly6QwTDbS4TBWsB4Uph81Z6tygUAIfWD6rYl3vPMnCkHm0JAE7UgTXkawwUNs3lWuYLm4YIDV35ePujYgf9D4o0inNQKFVVdLHjAWnOykt2GYPrLPCRCKRrIUk7xIg=
-  'on':
+  on:
     branch: stable
-    node_js:
-      - 9.2.0
+    node_js: 9.2.0
 notifications:
   slack:
     secure: >-

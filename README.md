@@ -73,6 +73,11 @@ module.exports = function(manager) {
     * Executes query
     * `query`: `String`, the query to be executed
     * `callback`: `Function`
+  * `.query(preparedQuery, params, callback)`
+    * Executes prepared query
+    * `preparedQuery`: `String`, the query to be executed
+	* `params`: `Array`
+    * `callback`: `Function`
   * `.save(data, callback)`
     * Insert data if the data doesn't have `id`, or update data if it has.
     * `data`: `Object` or `Array`, If array, it must be the array of objects to be saved

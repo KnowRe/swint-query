@@ -408,5 +408,17 @@ describe('Query test', function () {
 
 	});
 
+	it('Test prepared statement insert foos tables', function (done) {
+		let reason = `Doesn't need after all`
+		models.foo.query(
+			`insert into foos (column1, column2, column3) values (99999, ?, 'CCC')`,
+			[`${reason}`],
+			function (err, res) {
+				print(err);
+				done();
+			}
+		);
+	});
+
 
 });

@@ -420,5 +420,16 @@ describe('Query test', function () {
 		);
 	});
 
+	it('Test queryPromise prepared statement select from foos', function (done) {
+		let reason = `Doesn't need after all`
+		models.foo.queryPromise(
+			`select * from foos where column2=?`,
+			[`${reason}`]
+		).then(function (res) {
+			print(res);
+			done();
+		});
+	});
+
 
 });

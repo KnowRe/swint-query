@@ -73,11 +73,35 @@ module.exports = function(manager) {
     * Executes query
     * `query`: `String`, the query to be executed
     * `callback`: `Function`
+  * `.query(preparedQuery, params, callback)`
+    * Executes prepared query
+    * `preparedQuery`: `String`, the query to be executed
+	* `params`: `Array`
+    * `callback`: `Function`
   * `.save(data, callback)`
     * Insert data if the data doesn't have `id`, or update data if it has.
     * `data`: `Object` or `Array`, If array, it must be the array of objects to be saved
     * `callback`: `Function`
   * `.fetch(condition, option, callback)`
+    * `condition`: `Object`, the key is the name of field
+    * `option`: `Object`
+      * `target`: `Array`, the list of fields to be fetched, can be `*` or `joinedModel.*`.
+      * `join`: `Array`, the list of the names of models to be joined
+      * `order`: `String` or `Array`, the name of the field to be sorted, can be `Array`.
+      * `orderFlag`: `Boolean` or `Array`, the sorting order
+      * `limit`: `Number`, the number of rows to fetch
+
+  * `.queryPromise(query)`
+    * Executes query
+    * `query`: `String`, the query to be executed
+  * `.queryPromise(preparedQuery, params)`
+    * Executes prepared query
+    * `preparedQuery`: `String`, the query to be executed
+	* `params`: `Array`
+  * `.savePromise(data)`
+    * Insert data if the data doesn't have `id`, or update data if it has.
+    * `data`: `Object` or `Array`, If array, it must be the array of objects to be saved
+  * `.fetchPromise(condition, option)`
     * `condition`: `Object`, the key is the name of field
     * `option`: `Object`
       * `target`: `Array`, the list of fields to be fetched, can be `*` or `joinedModel.*`.
